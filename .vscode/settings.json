@@ -1,0 +1,6 @@
+{
+    "editor.wordWrap": "off",
+    "editor.cursorStyle": "line",
+    "editor.renderWhitespace": "selection",
+    "explorer.fileNesting.enabled": false
+}
