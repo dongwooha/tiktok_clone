@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/src/fa_icon.dart';
 
 import '../../../constants/sizes.dart';
 
 class AuthButton extends StatelessWidget {
   final String text;
+  final FaIcon icon;
 
   const AuthButton({
     super.key,
     required this.text,
+    required this.icon,
   });
 
   @override
@@ -15,21 +18,32 @@ class AuthButton extends StatelessWidget {
     return FractionallySizedBox(
       widthFactor: 1,
       child: Container(
-        padding: const EdgeInsets.symmetric(
-          vertical: Sizes.size16,
+        padding: const EdgeInsets.all(
+          Sizes.size16,
+          // vertical: Sizes.size16,
+          // horizontal: Sizes.size16,
         ),
         decoration: BoxDecoration(
             border: Border.all(
           color: Colors.grey.shade300,
           width: Sizes.size2,
         )),
-        child: Text(
-          text,
-          style: const TextStyle(
-            fontSize: Sizes.size16,
-            fontWeight: FontWeight.w600,
-          ),
-          textAlign: TextAlign.center,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: icon,
+            ),
+            Text(
+              text,
+              style: const TextStyle(
+                fontSize: Sizes.size16,
+                fontWeight: FontWeight.w600,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
       ),
     );
