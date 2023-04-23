@@ -11,6 +11,21 @@ class LoginFormScreen extends StatefulWidget {
 }
 
 class _LoginFormScreenState extends State<LoginFormScreen> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  Map<String, String> formData = {};
+
+  void onSubmitTap() {
+    // _formKey.currentState?.validate();
+    if (_formKey.currentState != null) {
+      if (_formKey.currentState!.validate()) {
+        _formKey.currentState!.save();
+        // print(formData.values);
+        print(formData);
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,15 +37,45 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
           horizontal: 36,
         ),
         child: Form(
+          key: _formKey,
           child: Column(
-            children: const [
-              TextField(),
+            children: [
+              TextFormField(
+                decoration: const InputDecoration(
+                  hintText: "Email",
+                ),
+                validator: (value) {
+                  // return "I don't like your email";
+                  return null;
+                },
+                onSaved: ((newValue) {
+                  if (newValue != null) {
+                    formData['email'] = newValue;
+                  }
+                }),
+              ),
               Gaps.v16,
-              TextField(),
+              TextFormField(
+                decoration: const InputDecoration(
+                  hintText: "Password",
+                ),
+                validator: (value) {
+                  // return "Wrong password";
+                  return null;
+                },
+                onSaved: ((newValue) {
+                  if (newValue != null) {
+                    formData['password'] = newValue;
+                  }
+                }),
+              ),
               Gaps.v20,
-              FormButton(
-                disabled: false,
-                title: "Log in",
+              GestureDetector(
+                onTap: onSubmitTap,
+                child: const FormButton(
+                  disabled: false,
+                  title: "Log in",
+                ),
               ),
             ],
           ),
