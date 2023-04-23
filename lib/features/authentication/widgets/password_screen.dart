@@ -22,7 +22,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
 
   @override
   void initState() {
-    super.initState(); // 초기화는 먼하ㄴ 것이 합리적임
+    super.initState(); // 초기화는 먼저 하는 것이 합리적임
 
     _passwordController.addListener(() {
       print(_passwordController.text);
@@ -35,7 +35,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
   @override
   void dispose() {
     _passwordController.dispose();
-    super.dispose(); // dispose 를 뒤 하는 것ㅣ 합ㅣㅓㄱ임
+    super.dispose(); // dispose 를 뒤에 하는 것이 합리적임
   }
 
   bool _isPasswordValid() {
@@ -179,6 +179,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                 onTap: _onSubmit,
                 child: FormButton(
                   disabled: !_isPasswordValid(),
+                  title: "Next",
                 ),
               ),
             ],

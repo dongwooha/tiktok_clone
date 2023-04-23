@@ -30,7 +30,7 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
   @override
   void dispose() {
     _birthdayController.dispose();
-    super.dispose(); // dispose 를 뒤 하는 것이 합리적임
+    super.dispose(); // dispose 를 뒤에 하는 것이 합리적임
   }
 
   void _onNextTap() {
@@ -96,7 +96,10 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
             Gaps.v16,
             GestureDetector(
               onTap: _onNextTap,
-              child: FormButton(disabled: _birthday.isNotEmpty),
+              child: FormButton(
+                disabled: _birthday.isNotEmpty,
+                title: "Next",
+              ),
             )
           ],
         ),
