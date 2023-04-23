@@ -1,45 +1,48 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:titok_clone/constants/gaps.dart';
 import 'package:titok_clone/constants/sizes.dart';
-import 'package:titok_clone/features/authentication/widgets/email_screen.dart';
+import 'package:titok_clone/features/onboarding/interest.dart';
 
 import 'form_button.dart';
 
-class UsernameScreen extends StatefulWidget {
-  const UsernameScreen({super.key});
+class BirthdayScreen extends StatefulWidget {
+  const BirthdayScreen({super.key});
 
   @override
-  State<UsernameScreen> createState() => _UsernameScreenState();
+  State<BirthdayScreen> createState() => _BirthdayScreenState();
 }
 
-class _UsernameScreenState extends State<UsernameScreen> {
-  final TextEditingController _usernameController = TextEditingController();
+class _BirthdayScreenState extends State<BirthdayScreen> {
+  final TextEditingController _birthdayController = TextEditingController();
 
-  String _username = "";
+  final String _birthday = "";
+  DateTime initialDate = DateTime(
+      DateTime.now().year - 12, DateTime.now().month, DateTime.now().day);
 
   @override
   void initState() {
     super.initState(); // 초기화는 먼저 것이 합리적임
-
-    _usernameController.addListener(() {
-      print(_usernameController.text);
-      setState(() {
-        _username = _usernameController.text;
-      });
-    });
+    // print(initialDate);
+    _setTextFiledToDate(initialDate);
   }
 
   @override
   void dispose() {
-    _usernameController.dispose();
+    _birthdayController.dispose();
     super.dispose(); // dispose 를 뒤 하는 것이 합리적임
   }
 
   void _onNextTap() {
-    if (_username.isEmpty) return;
+    if (_birthday.isEmpty) return;
 
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => const EmailScreen()));
+        .push(MaterialPageRoute(builder: (context) => const InterestScreen()));
+  }
+
+  void _setTextFiledToDate(DateTime date) {
+    final textDate = date.toString().split(" ").first;
+    _birthdayController.value = TextEditingValue(text: textDate);
   }
 
   @override
@@ -62,7 +65,7 @@ class _UsernameScreenState extends State<UsernameScreen> {
           children: [
             Gaps.v40,
             const Text(
-              "Create username",
+              "When's your birthday",
               style: TextStyle(
                 fontSize: Sizes.size20,
                 fontWeight: FontWeight.w600,
@@ -78,9 +81,9 @@ class _UsernameScreenState extends State<UsernameScreen> {
             ),
             Gaps.v8,
             TextField(
-              controller: _usernameController,
+              controller: _birthdayController,
               decoration: InputDecoration(
-                hintText: "user name",
+                // hintText: "user name",
                 enabledBorder: const UnderlineInputBorder(
                   borderSide: BorderSide(color: Colors.grey),
                 ),
@@ -93,9 +96,19 @@ class _UsernameScreenState extends State<UsernameScreen> {
             Gaps.v16,
             GestureDetector(
               onTap: _onNextTap,
-              child: FormButton(disabled: _username.isEmpty),
+              child: FormButton(disabled: _birthday.isNotEmpty),
             )
           ],
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: SizedBox(
+          height: 300,
+          child: CupertinoDatePicker(
+              onDateTimeChanged: _setTextFiledToDate,
+              mode: CupertinoDatePickerMode.date,
+              maximumDate: DateTime.now(),
+              initialDateTime: initialDate),
         ),
       ),
     );

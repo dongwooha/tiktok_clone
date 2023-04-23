@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:titok_clone/constants/gaps.dart';
 import 'package:titok_clone/constants/sizes.dart';
+import 'package:titok_clone/features/authentication/widgets/password_screen.dart';
+
+import 'form_button.dart';
 
 class EmailScreen extends StatefulWidget {
   const EmailScreen({super.key});
@@ -10,100 +13,115 @@ class EmailScreen extends StatefulWidget {
 }
 
 class _EmailScreenState extends State<EmailScreen> {
-  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
 
-  String _username = "";
+  String _email = "";
 
   @override
   void initState() {
-    super.initState();
+    super.initState(); // 초기화는 먼하ㄴ 것이 합리적임
 
-    _usernameController.addListener(() {
-      print(_usernameController.text);
+    _emailController.addListener(() {
+      print(_emailController.text);
       setState(() {
-        _username = _usernameController.text;
+        _email = _emailController.text;
       });
     });
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: const Text(
-          "Sign up",
-        ),
+  void dispose() {
+    _emailController.dispose();
+    super.dispose(); // dispose 를 뒤 하는 것ㅣ 합ㅣㅓㄱ임
+  }
+
+  String? isEmailValid() {
+    if (_email.isEmpty) return null;
+    final regExp = RegExp(
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+    if (!regExp.hasMatch(_email)) {
+      return "Email not valid";
+    }
+    return null;
+  }
+
+  void _onScaffoldTap() {
+    FocusScope.of(context).unfocus();
+  }
+
+  void _onSubmit() {
+    if (_email.isEmpty || isEmailValid() != null) return;
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const PasswordScreen(),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: Sizes.size36,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: _onScaffoldTap,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: const Text(
+            "Sign up",
+          ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Gaps.v40,
-            const Text(
-              "Create username",
-              style: TextStyle(
-                fontSize: Sizes.size20,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            Gaps.v8,
-            const Text(
-              "You can always change this later.",
-              style: TextStyle(
-                  fontSize: Sizes.size16,
+        body: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: Sizes.size36,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Gaps.v40,
+              const Text(
+                "What is your email?",
+                style: TextStyle(
+                  fontSize: Sizes.size20,
                   fontWeight: FontWeight.w600,
-                  color: Colors.black54),
-            ),
-            Gaps.v8,
-            TextField(
-              controller: _usernameController,
-              decoration: InputDecoration(
-                hintText: "user name",
-                enabledBorder: const UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade400),
                 ),
               ),
-              cursorColor: Theme.of(context).primaryColor,
-            ),
-            Gaps.v16,
-            FractionallySizedBox(
-              widthFactor: 1,
-              child: AnimatedContainer(
-                duration: const Duration(
-                  // seconds: 1,
-                  milliseconds: 500,
-                ),
-                decoration: BoxDecoration(
-                  // color: _username.contains("@")
-                  color: _username.isEmpty
-                      ? Colors.grey.shade400
-                      : Theme.of(context).primaryColor,
-                ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: Sizes.size10,
-                  ),
-                  child: Text(
-                    "Next",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        fontSize: Sizes.size16),
-                  ),
-                ),
+              Gaps.v8,
+              const Text(
+                "You can always change this later.",
+                style: TextStyle(
+                    fontSize: Sizes.size16,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black54),
               ),
-            )
-          ],
+              Gaps.v8,
+              TextField(
+                controller: _emailController,
+                keyboardType: TextInputType.emailAddress,
+                autocorrect: false,
+                onEditingComplete: _onSubmit,
+                decoration: InputDecoration(
+                  hintText: "Email",
+                  errorText: isEmailValid(),
+                  enabledBorder: const UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey.shade400),
+                  ),
+                ),
+                cursorColor: Theme.of(context).primaryColor,
+              ),
+              Gaps.v16,
+              GestureDetector(
+                onTap: _onSubmit,
+                child: FormButton(
+                  disabled: _email.isEmpty || isEmailValid() != null,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
