@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:titok_clone/features/authentication/widgets/form_button.dart';
+import 'package:titok_clone/features/onboarding/interest.dart';
 
 import '../../../constants/gaps.dart';
 
@@ -21,7 +22,12 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
       if (_formKey.currentState!.validate()) {
         _formKey.currentState!.save();
         // print(formData.values);
-        print(formData);
+        // print(formData);
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const InterestScreen(),
+          ),
+        );
       }
     }
   }

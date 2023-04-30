@@ -34,10 +34,15 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
   }
 
   void _onNextTap() {
-    if (_birthday.isEmpty) return;
+    if (_birthdayController.text.isEmpty) return;
 
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => const InterestScreen()));
+    print(_birthdayController.text);
+
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const InterestScreen(),
+      ),
+    );
   }
 
   void _setTextFiledToDate(DateTime date) {
