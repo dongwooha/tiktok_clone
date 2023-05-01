@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:titok_clone/constants/gaps.dart';
 import 'package:titok_clone/constants/sizes.dart';
+
+import 'widgets/interest_button.dart';
 
 const interests = [
   "Daily Life",
@@ -43,68 +46,91 @@ const interests = [
   "Home & Garden",
 ];
 
-class InterestScreen extends StatelessWidget {
+class InterestScreen extends StatefulWidget {
   const InterestScreen({Key? key}) : super(key: key);
+
+  @override
+  State<InterestScreen> createState() => _InterestScreenState();
+}
+
+class _InterestScreenState extends State<InterestScreen> {
+  final ScrollController _scrollController = ScrollController();
+
+  bool _showTitle = false;
+
+  void _onScroll() {
+    if (_scrollController.offset > 100) {
+      if (_showTitle) return;
+      setState(() {
+        _showTitle = true;
+      });
+    } else {
+      setState(() {
+        _showTitle = false;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(() {
+      _onScroll();
+      // print(_scrollController.offset);
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Choose your interest"),
+        title: AnimatedOpacity(
+            opacity: _showTitle ? 1 : 0,
+            // opacity: (_scrollController.offset > 100) ? 1 : 0,
+            duration: const Duration(milliseconds: 300),
+            child: const Text("Choose your interest")),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: Sizes.size24,
-          ),
-          child: Column(
-            children: [
-              const Text(
-                "Choose your interest",
-                style: TextStyle(
-                  fontSize: Sizes.size40,
-                  fontWeight: FontWeight.bold,
+      body: Scrollbar(
+        controller: _scrollController,
+        child: SingleChildScrollView(
+          controller: _scrollController,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: Sizes.size24,
+            ),
+            child: Column(
+              children: [
+                const Text(
+                  "Choose your interest",
+                  style: TextStyle(
+                    fontSize: Sizes.size40,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              Gaps.v20,
-              const Text(
-                "Get better video recommendations",
-                style: TextStyle(
-                  fontSize: Sizes.size20,
+                Gaps.v20,
+                const Text(
+                  "Get better video recommendations",
+                  style: TextStyle(
+                    fontSize: Sizes.size20,
+                  ),
                 ),
-              ),
-              Gaps.v64,
-              Wrap(
-                runSpacing: 16,
-                spacing: 16,
-                children: [
-                  for (var interest in interests)
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: Sizes.size24,
-                        vertical: Sizes.size16,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.black.withOpacity(0.1),
-                        ),
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(
-                          Sizes.size32,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.05),
-                            blurRadius: 5,
-                            spreadRadius: 5,
-                          ),
-                        ],
-                      ),
-                      child: Text(interest),
-                    ),
-                ],
-              )
-            ],
+                Gaps.v64,
+                Wrap(
+                  runSpacing: 16,
+                  spacing: 16,
+                  children: [
+                    for (var interest in interests)
+                      InterestButton(interest: interest),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -112,22 +138,33 @@ class InterestScreen extends StatelessWidget {
         elevation: 1,
         child: Padding(
           padding: const EdgeInsets.all(24.0),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-            ),
-            child: const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text(
-                "Next",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: Sizes.size16,
-                ),
-              ),
-            ),
+          // child: TextButton(
+          //   onPressed: () {},
+          //   child: const Text("Next"),
+          // ),
+
+          child: CupertinoButton(
+            color: Theme.of(context).primaryColor,
+            onPressed: () {},
+            child: const Text("Next"),
           ),
+
+          // child: Container(
+          //   decoration: BoxDecoration(
+          //     color: Theme.of(context).primaryColor,
+          //   ),
+          //   child: const Padding(
+          //     padding: EdgeInsets.all(16.0),
+          //     child: Text(
+          //       "Next",
+          //       textAlign: TextAlign.center,
+          //       style: TextStyle(
+          //         color: Colors.white,
+          //         fontSize: Sizes.size16,
+          //       ),
+          //     ),
+          //   ),
+          // ),
         ),
       ),
     );
