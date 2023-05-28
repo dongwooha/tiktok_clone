@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:titok_clone/constants/gaps.dart';
 import 'package:titok_clone/constants/sizes.dart';
+import 'package:titok_clone/features/onboarding/widgets/tutorial_screen.dart';
 
-import 'widgets/interest_button.dart';
+import 'interest_button.dart';
 
 const interests = [
   "Daily Life",
@@ -57,6 +58,15 @@ class _InterestScreenState extends State<InterestScreen> {
   final ScrollController _scrollController = ScrollController();
 
   bool _showTitle = false;
+
+  void _onNextTap() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const TutorialScreen(),
+      ),
+    );
+  }
 
   void _onScroll() {
     if (_scrollController.offset > 100) {
@@ -145,7 +155,10 @@ class _InterestScreenState extends State<InterestScreen> {
 
           child: CupertinoButton(
             color: Theme.of(context).primaryColor,
-            onPressed: () {},
+            onPressed: () {
+              // print("object");
+              _onNextTap();
+            },
             child: const Text("Next"),
           ),
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:titok_clone/features/onboarding/interest.dart';
+import 'package:titok_clone/features/onboarding/widgets/interest_screen.dart';
 // mobbin 에서 디자인 볼 수 있음
 
 void main() {

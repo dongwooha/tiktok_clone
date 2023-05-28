@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:titok_clone/constants/gaps.dart';
 import 'package:titok_clone/constants/sizes.dart';
-import 'package:titok_clone/features/onboarding/interest.dart';
+import 'package:titok_clone/features/onboarding/widgets/interest_screen.dart';
 
 import 'form_button.dart';
 

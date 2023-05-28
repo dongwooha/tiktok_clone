@@ -25,7 +25,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
     super.initState(); // 초기화는 먼저 하는 것이 합리적임
 
     _passwordController.addListener(() {
-      print(_passwordController.text);
+      // print(_passwordController.text);
       setState(() {
         _password = _passwordController.text;
       });

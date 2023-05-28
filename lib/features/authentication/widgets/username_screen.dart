@@ -22,7 +22,7 @@ class _UsernameScreenState extends State<UsernameScreen> {
     super.initState(); // 초기화는 먼저 것이 합리적임
 
     _usernameController.addListener(() {
-      print(_usernameController.text);
+      // print(_usernameController.text);
       setState(() {
         _username = _usernameController.text;
       });

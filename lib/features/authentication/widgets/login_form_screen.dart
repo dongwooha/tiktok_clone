@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:titok_clone/features/authentication/widgets/form_button.dart';
-import 'package:titok_clone/features/onboarding/interest.dart';
+import 'package:titok_clone/features/onboarding/widgets/interest_screen.dart';
 
 import '../../../constants/gaps.dart';
 
