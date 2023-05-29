@@ -22,7 +22,7 @@ class _EmailScreenState extends State<EmailScreen> {
     super.initState(); // 초기화는 먼하ㄴ 것이 합리적임
 
     _emailController.addListener(() {
-      print(_emailController.text);
+      // print(_emailController.text);
       setState(() {
         _email = _emailController.text;
       });

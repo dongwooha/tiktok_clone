@@ -23,10 +23,24 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
         _formKey.currentState!.save();
         // print(formData.values);
         // print(formData);
-        Navigator.of(context).push(
+
+        // push 를 사용할 경우 뒤로 돌아갈 수 있기 때문에
+        // Navigator.of(context).push(
+        //   MaterialPageRoute(
+        //     builder: (context) => const InterestScreen(),
+        //   ),
+
+        // );
+
+        Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
             builder: (context) => const InterestScreen(),
           ),
+          // (route) {
+          //   // print(route);
+          //   return false;
+          // },
+          (route) => false,
         );
       }
     }

@@ -36,7 +36,7 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
   void _onNextTap() {
     if (_birthdayController.text.isEmpty) return;
 
-    print(_birthdayController.text);
+    // print(_birthdayController.text);
 
     Navigator.of(context).push(
       MaterialPageRoute(

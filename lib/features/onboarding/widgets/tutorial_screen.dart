@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:titok_clone/constants/gaps.dart';
 import 'package:titok_clone/constants/sizes.dart';
 
+import '../../main_navigation/main_navigation_screen.dart';
+
 enum Direction { right, left }
 
 enum Page { first, second }
@@ -43,6 +45,15 @@ class _TutorialScreenState extends State<TutorialScreen> {
     }
   }
 
+  void _onEnterAppTap() {
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (context) => const MainNavigationScreen(),
+      ),
+      (route) => false,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -72,7 +83,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
                       style: TextStyle(
                         fontSize: Sizes.size20,
                       ),
-                    )
+                    ),
                   ],
                 ),
                 secondChild: Column(
@@ -92,7 +103,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
                       style: TextStyle(
                         fontSize: Sizes.size20,
                       ),
-                    )
+                    ),
                   ],
                 ),
                 crossFadeState: _showingPage == Page.first
@@ -115,7 +126,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
                 duration: const Duration(microseconds: 300),
                 opacity: _showingPage == Page.first ? 0 : 1,
                 child: CupertinoButton(
-                  onPressed: () {},
+                  onPressed: _onEnterAppTap,
                   color: Theme.of(context).primaryColor,
                   child: const Text("Enter the app!"),
                 ),
