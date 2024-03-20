@@ -44,41 +44,37 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBwfoYQ2fDdedxfVGV4jFY6_wANgm4M838',
-    appId: '1:476947291063:web:0350f404ae46e426e0a632',
-    messagingSenderId: '476947291063',
-    projectId: 'tiktok-abc-xyz',
-    authDomain: 'tiktok-abc-xyz.firebaseapp.com',
-    storageBucket: 'tiktok-abc-xyz.appspot.com',
+    apiKey: 'AIzaSyA5sdbITWDl-NcTI7-epcq-UfacybbkxUE',
+    appId: '1:2355280728:web:b066b72f611560b7e3832d',
+    messagingSenderId: '2355280728',
+    projectId: 'dongwoo-zookeeper',
+    authDomain: 'dongwoo-zookeeper.firebaseapp.com',
+    storageBucket: 'dongwoo-zookeeper.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAqjB_ClOmAh_tEnIq3qDDbgWi2izP6Jzo',
-    appId: '1:476947291063:android:36b0327a5d1f9145e0a632',
-    messagingSenderId: '476947291063',
-    projectId: 'tiktok-abc-xyz',
-    storageBucket: 'tiktok-abc-xyz.appspot.com',
+    apiKey: 'AIzaSyDdE5S_sb13OaFWSjTmQHenp0sfPTfRY7s',
+    appId: '1:2355280728:android:074d031d1a111c9be3832d',
+    messagingSenderId: '2355280728',
+    projectId: 'dongwoo-zookeeper',
+    storageBucket: 'dongwoo-zookeeper.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBut0ecAdRTg-ootQAetxwQMayibUjs1AU',
-    appId: '1:476947291063:ios:9ea83a901b668d25e0a632',
-    messagingSenderId: '476947291063',
-    projectId: 'tiktok-abc-xyz',
-    storageBucket: 'tiktok-abc-xyz.appspot.com',
-    androidClientId: '476947291063-9r9crc1o5vrvnebk499c8qllvnsb79ee.apps.googleusercontent.com',
-    iosClientId: '476947291063-qrcet8e2k6ooket4cgnhthv49l0mta1m.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCh5Ag_xZtPF4kh6Wt2urAw9NAR3K8_REg',
+    appId: '1:2355280728:ios:5dc5ecbfd5535673e3832d',
+    messagingSenderId: '2355280728',
+    projectId: 'dongwoo-zookeeper',
+    storageBucket: 'dongwoo-zookeeper.appspot.com',
     iosBundleId: 'co.nomadcoders.tiktok',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBut0ecAdRTg-ootQAetxwQMayibUjs1AU',
-    appId: '1:476947291063:ios:6371747d79f17ecde0a632',
-    messagingSenderId: '476947291063',
-    projectId: 'tiktok-abc-xyz',
-    storageBucket: 'tiktok-abc-xyz.appspot.com',
-    androidClientId: '476947291063-9r9crc1o5vrvnebk499c8qllvnsb79ee.apps.googleusercontent.com',
-    iosClientId: '476947291063-ta4mq8mpcs4p3vkbgf5dp57d3u46og32.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCh5Ag_xZtPF4kh6Wt2urAw9NAR3K8_REg',
+    appId: '1:2355280728:ios:3d537a80289519dde3832d',
+    messagingSenderId: '2355280728',
+    projectId: 'dongwoo-zookeeper',
+    storageBucket: 'dongwoo-zookeeper.appspot.com',
     iosBundleId: 'com.example.tiktokClone',
   );
 }

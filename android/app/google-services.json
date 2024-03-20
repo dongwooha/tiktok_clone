@@ -1,87 +1,26 @@
 {
   "project_info": {
-    "project_number": "476947291063",
-    "project_id": "tiktok-abc-xyz",
-    "storage_bucket": "tiktok-abc-xyz.appspot.com"
+    "project_number": "2355280728",
+    "project_id": "dongwoo-zookeeper",
+    "storage_bucket": "dongwoo-zookeeper.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:476947291063:android:36b0327a5d1f9145e0a632",
+        "mobilesdk_app_id": "1:2355280728:android:074d031d1a111c9be3832d",
         "android_client_info": {
           "package_name": "com.example.tiktok_clone"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "476947291063-9r9crc1o5vrvnebk499c8qllvnsb79ee.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.tiktok_clone",
-            "certificate_hash": "d083a7b4deb573cd3c2162b3b170e15210f6a145"
-          }
-        },
-        {
-          "client_id": "476947291063-8m5mbj24o37d7nmgnel4lfv4usgsg824.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAqjB_ClOmAh_tEnIq3qDDbgWi2izP6Jzo"
+          "current_key": "AIzaSyDdE5S_sb13OaFWSjTmQHenp0sfPTfRY7s"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "476947291063-8m5mbj24o37d7nmgnel4lfv4usgsg824.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "476947291063-povvf9utl422f749vj8r4a2cv57o5cd4.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.toktik"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:476947291063:android:6fb34efad91033b4e0a632",
-        "android_client_info": {
-          "package_name": "com.example.toktik"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "476947291063-8m5mbj24o37d7nmgnel4lfv4usgsg824.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAqjB_ClOmAh_tEnIq3qDDbgWi2izP6Jzo"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "476947291063-8m5mbj24o37d7nmgnel4lfv4usgsg824.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "476947291063-povvf9utl422f749vj8r4a2cv57o5cd4.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.toktik"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
