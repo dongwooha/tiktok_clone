@@ -1,6 +1,6 @@
 {
-    "name": "titok_clone",
-    "short_name": "titok_clone",
+    "name": "tiktok_clone",
+    "short_name": "tiktok_clone",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
